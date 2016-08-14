@@ -60,6 +60,7 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval',
 
     $scope.reset = function(enterance) {
         $scope.data[enterance].counter = 1;
+        $scope.commit(enterance);
     }
 
     $scope.resetAll = function() {
@@ -159,6 +160,6 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval',
             $scope.data = snapshot.val();
             $scope.$digest();
         });
-    },3000) 
+    },2000) 
 
 }]);
