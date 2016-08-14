@@ -1,7 +1,7 @@
 // declare a module
 var app = angular.module('foodApp', ["firebase", "ngSanitize", "ngCsv"]);
 
-app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout', function($scope, $firebaseObject, $timeout) {
+app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval', function($scope, $firebaseObject, $timeout, $interval) {
     
     var now = new Date();
     $scope.today = now.getDate() + '.' + (now.getMonth()+1) + '.' + now.getFullYear() + '_' + now.getHours() + '-' + now.getMinutes();
@@ -153,5 +153,12 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout', function($s
             $scope.$digest();
         });
     };
+
+    $interval( function () {
+        var DataRef = firebase.database().ref('/').once('value').then(function(snapshot) {
+            $scope.data = snapshot.val();
+            $scope.$digest();
+        });
+    },3000) 
 
 }]);
