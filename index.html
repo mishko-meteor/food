@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="foodApp">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Alef" rel="stylesheet">
+    </head>
+    <body ng-cloak ng-controller="mainCtrl">
+        <section >
+            <article>
+                <h1>כניסה ראשית</h1>
+                <span class="main">
+                    <button type="" ng-click="increase('front')">נכנס</button>
+                    <!--<button type="" ng-click="createDB()">נכנס</button>-->
+                    <button type="" ng-click="decrease('front')">יצא</button>
+                </span>
+                <span class="secondary">
+                    <button type="button" ng-csv="data.front.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="MainEntrance{{today}}.csv">יצא נתונים</button>
+                    <button type="" ng-click="reset('front')">אפס מונה</button>
+                </span>
+                 <span>
+                    <h2>{{ data['front'].counter }}</h2>                
+                </span>
+            </article>
+            <article>
+                <h1>כניסת סא"לים</h1>
+                <span class="main">
+                    <button type="" ng-click="increase('saalim')">נכנס</button>
+                    <button type="" ng-click="decrease('saalim')">יצא</button>
+                </span>
+                <span class="secondary">
+                    <button type="button" ng-csv="data.saalim.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="Saalim{{today}}.csv">יצא נתונים</button>
+                    <button type="" ng-click="reset('front')">אפס מונה</button>
+                </span>
+                 <span>
+                    <h2>{{ data['saalim'].counter }}</h2>                
+                </span>
+            </article>
+            <article>
+                <h1>כניסה אחורית</h1>
+                <span class="main">
+                    <button type="" ng-click="increase('back')">נכנס</button>
+                    <button type="" ng-click="decrease('back')">יצא</button>
+                </span>
+                <span class="secondary">
+                    <button type="button" ng-csv="data.back.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="BackEntrance{{today}}.csv">יצא נתונים</button>
+                    <button type="" ng-click="reset('front')">אפס מונה</button>
+                </span>
+                 <span>
+                    <h2>{{ data['back'].counter }}</h2>                
+                </span>
+            </article>
+        </section>
+        <section>
+            <article>
+                <h1>בקרה</h1>
+                <button ng-show="!dataDeleted" type="" ng-click="resetAll()" ng-class="{'warnDelete': warnDelete}">{{ deleteAllLabel }}</button>
+                <span ng-show="dataDeleted" class="deleted">הנתונים נמחקו בהצלחה</span>
+            </article>
+        </section>
+    </body>
+<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+<!--<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>-->
+
+<script src="./node_modules/angular/angular.js"></script>
+<script src="./node_modules/angularfire/dist/angularfire.js"></script>
+<script src="./node_modules/ng-csv/build/ng-csv.js"></script>
+<script src="./node_modules/angular-sanitize/angular-sanitize.js"></script>
+<script src="./scripts/scripts.js"></script>
+<script src="./scripts/saveFile.js"></script>
+
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDcxlNGzotxhba8GIHZ4fnHRzpHP7vz2bw",
+    authDomain: "food-8f9cf.firebaseapp.com",
+    databaseURL: "https://food-8f9cf.firebaseio.com",
+    storageBucket: "food-8f9cf.appspot.com",
+  };
+  firebase.initializeApp(config);
+</script>
+
+</html>
