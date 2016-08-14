@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-var port = "process.env.PORT || 3000"
+app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/'));
 
@@ -10,6 +10,6 @@ app.get('/', function (req, res) {
 });
 
 
-app.listen(port, function () {
-    console.log('app is up and running at port ' + port);
+app.listen(app.get('port'), function () {
+    console.log('app is up and running at port ' + app.get('port'));
 });
