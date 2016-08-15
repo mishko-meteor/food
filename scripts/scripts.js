@@ -47,7 +47,7 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval',
 
     $scope.increase = function(enterance) {
         $scope.data[enterance].counter++;
-        $scope.updateData(enterance, 'נכנס');
+        $scope.updateData(enterance, 'Entered');
     }
 
 
@@ -55,7 +55,7 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval',
         if($scope.data[enterance].counter > 1) {
             $scope.data[enterance].counter--;
         }
-        $scope.updateData(enterance, 'יצא');
+        $scope.updateData(enterance, 'Left');
     }
 
     $scope.reset = function(enterance) {
@@ -113,37 +113,37 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval',
             action: action,
             date: date,
             time: time,
-            timestamp: now
+            fullTime: now.toString()
         };
         return timeStamp;
     }
 
      $scope.createDB = function () {
 
-        $scope.front = {
-            id: 'front',
-            name: 'כניסה ראשית',
+        $scope.entrance1 = {
+            id: 'entrance1',
+            name: 'כניסה 1',
             counter: 1,
             instances: []
         };
-        $scope.back = {
-            id: 'back',
-            name: 'כניסה אחורית',
-            counter: 1,
-            instances: []
-        };
-
-        $scope.saalim = {
-            id: 'saalim',
-            name: 'סא"לים',
+        $scope.entrance2 = {
+            id: 'entrance2',
+            name: 'כניסה 2',
             counter: 1,
             instances: []
         };
 
+        $scope.entrance3 = {
+            id: 'entrance3',
+            name: 'כניסה 3',
+            counter: 1,
+            instances: []
+        };
 
-        firebase.database().ref('/front/').set($scope.front);
-        firebase.database().ref('/back/').set($scope.back);
-        firebase.database().ref('/saalim/').set($scope.saalim);
+
+        firebase.database().ref('/entrance1/').set($scope.entrance1);
+        firebase.database().ref('/entrance2/').set($scope.entrance2);
+        firebase.database().ref('/entrance3/').set($scope.entrance3);
     }
  
     $scope.commit = function (enterance) {

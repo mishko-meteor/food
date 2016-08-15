@@ -7,49 +7,49 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Alef" rel="stylesheet">
     </head>
-    <body ng-cloak ng-controller="mainCtrl">
+    <body ng-cloak ng-controller="mainCtrl"> 
         <section >
             <article>
-                <h1>כניסה ראשית</h1>
+                <h1>כניסה 1</h1>
                 <span class="main">
-                    <button type="" ng-click="increase('front')">נכנס</button>
+                    <button type="" ng-click="increase('entrance1')">נכנס</button>
                     <!--<button type="" ng-click="createDB()">נכנס</button>-->
-                    <button type="" ng-click="decrease('front')">יצא</button>
+                    <button type="" ng-click="decrease('entrance1')">יצא</button>
                 </span>
                 <span class="secondary">
-                    <button type="button" ng-csv="data.front.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="MainEntrance{{today}}.csv">יצא נתונים</button>
-                    <button type="" ng-click="reset('front')">אפס מונה</button>
+                    <button type="button" ng-csv="data.entrance1.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="Entrance1_{{today}}.csv">יצא נתונים</button>
+                    <button type="" ng-click="reset('entrance1')">אפס מונה</button>
                 </span>
                  <span>
-                    <h2>{{ data['front'].counter }}</h2>                
+                    <h2>{{ data['entrance1'].counter }}</h2>             
                 </span>
             </article>
             <article>
-                <h1>כניסת סא"לים</h1>
+                <h1>כניסה 2</h1>
                 <span class="main">
-                    <button type="" ng-click="increase('saalim')">נכנס</button>
-                    <button type="" ng-click="decrease('saalim')">יצא</button>
+                    <button type="" ng-click="increase('entrance2')">נכנס</button>
+                    <button type="" ng-click="decrease('entrance2')">יצא</button>
                 </span>
                 <span class="secondary">
-                    <button type="button" ng-csv="data.saalim.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="Saalim{{today}}.csv">יצא נתונים</button>
-                    <button type="" ng-click="reset('front')">אפס מונה</button>
+                    <button type="button" ng-csv="data.entrance2.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="Entrance2_{{today}}.csv">יצא נתונים</button>
+                    <button type="" ng-click="reset('entrance2')">אפס מונה</button>
                 </span>
                  <span>
-                    <h2>{{ data['saalim'].counter }}</h2>                
+                    <h2>{{ data['entrance2'].counter }}</h2>                
                 </span>
             </article>
             <article>
-                <h1>כניסה אחורית</h1>
+                <h1>כניסה 3</h1>
                 <span class="main">
-                    <button type="" ng-click="increase('back')">נכנס</button>
-                    <button type="" ng-click="decrease('back')">יצא</button>
+                    <button type="" ng-click="increase('entrance3')">נכנס</button>
+                    <button type="" ng-click="decrease('entrance3')">יצא</button>
                 </span>
                 <span class="secondary">
-                    <button type="button" ng-csv="data.back.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="BackEntrance{{today}}.csv">יצא נתונים</button>
-                    <button type="" ng-click="reset('front')">אפס מונה</button>
+                    <button type="button" ng-csv="data.entrance3.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="Entrance3_{{today}}.csv">יצא נתונים</button>
+                    <button type="" ng-click="reset('entrance3')">אפס מונה</button>
                 </span>
                  <span>
-                    <h2>{{ data['back'].counter }}</h2>                
+                    <h2>{{ data['entrance3'].counter }}</h2>                
                 </span>
             </article>
         </section>
@@ -69,7 +69,6 @@
 <script src="./node_modules/ng-csv/build/ng-csv.js"></script>
 <script src="./node_modules/angular-sanitize/angular-sanitize.js"></script>
 <script src="./scripts/scripts.js"></script>
-<script src="./scripts/saveFile.js"></script>
 
 
 <script>
