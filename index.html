@@ -5,14 +5,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/animate.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Alef" rel="stylesheet">
     </head>
-    <body ng-cloak ng-controller="mainCtrl"> 
-        
-                <span class="deleted" ng-click="setView('home')">
-                        <h2>כניסות ויציאות  </h2>
-                </span>
-
+    <body ng-cloak ng-controller="mainCtrl" class="fadeInUp">
+        <span class="deleted" ng-click="setView('home')">
+                <h2>כניסות ויציאות  </h2>
+        </span>
         <section ng-show="currentView == 'home'">
             <article class="menu">
                 <h1>בחרו כניסה</h1>

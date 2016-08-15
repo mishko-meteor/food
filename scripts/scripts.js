@@ -8,7 +8,7 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval',
     var now = new Date();
     $scope.today = now.getDate() + '.' + (now.getMonth()+1) + '.' + now.getFullYear() + '_' + now.getHours() + '-' + now.getMinutes();
     $scope.todayForDisplay = now.getDate() + '.' + (now.getMonth()+1) + '.' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes();
-    if(now.getMinutes().length === 1)
+    if(now.getMinutes() < 10)
         $scope.todayForDisplay += '0';
     $scope.deleteAllLabel = 'לחצו למחיקת כלל הנתונים';
     $scope.currentView = 'home';
@@ -132,20 +132,20 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval',
         $scope.entrance1 = {
             id: 'entrance1',
             name: 'כניסה 1',
-            counter: 1,
+            counter: 0,
             instances: []
         };
         $scope.entrance2 = {
             id: 'entrance2',
             name: 'כניסה 2',
-            counter: 1,
+            counter: 0,
             instances: []
         };
 
         $scope.entrance3 = {
             id: 'entrance3',
             name: 'כניסה 3',
-            counter: 1,
+            counter: 0,
             instances: []
         };
 
