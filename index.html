@@ -8,45 +8,81 @@
         <link href="https://fonts.googleapis.com/css?family=Alef" rel="stylesheet">
     </head>
     <body ng-cloak ng-controller="mainCtrl"> 
-        <section >
-            <article>
+        
+                <span class="deleted" ng-click="setView('home')">
+                        <h2>כניסות ויציאות  </h2>
+                </span>
+
+        <section ng-show="currentView == 'home'">
+            <article class="menu">
+                <h1>בחרו כניסה</h1>
+                <span class="menuItem">
+                    <button type="" ng-click="setView('Entrance1')">כניסה 1 <h2>
+                        {{ data['entrance1'].counter }}
+                        </h2></button>         
+                </span>
+                <span class="menuItem">
+                    <button type="" ng-click="setView('Entrance2')">כניסה 2 <h2>
+                        {{ data['entrance2'].counter }}
+                        </h2></button>         
+                </span>
+                <span class="menuItem">
+                    <button type="" ng-click="setView('Entrance3')">כניסה 3 <h2>
+                        {{ data['entrance3'].counter }}
+                        </h2></button>         
+                </span>
+                <span class="menuItem">
+                    <button type="" ng-click="setView('allEntrances')">כל הכניסות<h2>
+                        {{ data['entrance1'].counter + data['entrance2'].counter + data['entrance3'].counter }} 
+                        </h2></button>         
+                </span>
+                <span class="menuItem">
+                    <h2>
+                        {{ todayForDisplay }}
+                    </h2>    
+                </span>
+            </article>
+        </section>
+
+        <section>
+            <article ng-show="currentView == 'Entrance1' || currentView == 'allEntrances'">
                 <h1>כניסה 1</h1>
                 <span class="main">
-                    <button type="" ng-click="increase('entrance1')">נכנס</button>
+                    <button type="" ng-click="increase('entrance1')">כניסה</button>
                     <!--<button type="" ng-click="createDB()">נכנס</button>-->
-                    <button type="" ng-click="decrease('entrance1')">יצא</button>
+                    <button type="" ng-click="decrease('entrance1')">יציאה</button>
                 </span>
                 <span class="secondary">
-                    <button type="button" ng-csv="data.entrance1.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="Entrance1_{{today}}.csv">יצא נתונים</button>
-                    <button type="" ng-click="reset('entrance1')">אפס מונה</button>
+                    <button type="button" ng-csv="data.entrance1.instances" csv-header="['Action', 'Timestamp', 'Date', 'Time']" filename="Entrance1_{{today}}.csv">יצא נתונים</button>
+                    <button type="" ng-click="reset('entrance1')">איפוס מונה</button>
                 </span>
                  <span>
                     <h2>{{ data['entrance1'].counter }}</h2>             
                 </span>
             </article>
-            <article>
+            <article ng-show="currentView == 'Entrance2' || currentView == 'allEntrances'">
                 <h1>כניסה 2</h1>
                 <span class="main">
-                    <button type="" ng-click="increase('entrance2')">נכנס</button>
-                    <button type="" ng-click="decrease('entrance2')">יצא</button>
+                    <button type="" ng-click="increase('entrance2')">כניסה</button>
+                    <button type="" ng-click="decrease('entrance2')">יציאה</button>
                 </span>
                 <span class="secondary">
-                    <button type="button" ng-csv="data.entrance2.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="Entrance2_{{today}}.csv">יצא נתונים</button>
-                    <button type="" ng-click="reset('entrance2')">אפס מונה</button>
+                    <button type="button" ng-csv="data.entrance2.instances" csv-header="['Action', 'Timestamp', 'Date', 'Time']" filename="Entrance2_{{today}}.csv">יצא נתונים</button>
+                    <button type="" ng-click="reset('entrance2')">איפוס מונה</button>
                 </span>
                  <span>
                     <h2>{{ data['entrance2'].counter }}</h2>                
                 </span>
             </article>
-            <article>
+            <article ng-show="currentView == 'Entrance3' || currentView == 'allEntrances'">
                 <h1>כניסה 3</h1>
                 <span class="main">
-                    <button type="" ng-click="increase('entrance3')">נכנס</button>
-                    <button type="" ng-click="decrease('entrance3')">יצא</button>
+                    <button type="" ng-click="increase('entrance3')">כניסה</button>
+                    <button type="" ng-click="decrease('entrance3')">יציאה</button>
                 </span>
                 <span class="secondary">
-                    <button type="button" ng-csv="data.entrance3.instances" csv-header="['Action', 'Date', 'Time', 'Timestamp']" filename="Entrance3_{{today}}.csv">יצא נתונים</button>
-                    <button type="" ng-click="reset('entrance3')">אפס מונה</button>
+                    <button type="button" ng-csv="data.entrance3.instances" csv-header="['Action', 'Timestamp', 'Date', 'Time']" filename="Entrance3_{{today}}.csv">יצא נתונים</button>
+                    <button type="" ng-click="reset('entrance3')">איפוס מונה</button>
                 </span>
                  <span>
                     <h2>{{ data['entrance3'].counter }}</h2>                
@@ -54,16 +90,14 @@
             </article>
         </section>
         <section>
-            <article>
+            <article ng-show="currentView == 'allEntrances'">
                 <h1>בקרה</h1>
                 <button ng-show="!dataDeleted" type="" ng-click="resetAll()" ng-class="{'warnDelete': warnDelete}">{{ deleteAllLabel }}</button>
                 <span ng-show="dataDeleted" class="deleted">הנתונים נמחקו בהצלחה</span>
             </article>
         </section>
     </body>
-<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-<!--<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>-->
-
+<script src="./scripts/firebase.js"></script>
 <script src="./node_modules/angular/angular.js"></script>
 <script src="./node_modules/angularfire/dist/angularfire.js"></script>
 <script src="./node_modules/ng-csv/build/ng-csv.js"></script>

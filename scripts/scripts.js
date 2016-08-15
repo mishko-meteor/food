@@ -1,12 +1,19 @@
 // declare a module
 var app = angular.module('foodApp', ["firebase", "ngSanitize", "ngCsv"]);
 
+// app.config(['$locationProvider', function ($locationProvider){}]);
+
 app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval', function($scope, $firebaseObject, $timeout, $interval) {
     
     var now = new Date();
     $scope.today = now.getDate() + '.' + (now.getMonth()+1) + '.' + now.getFullYear() + '_' + now.getHours() + '-' + now.getMinutes();
+    $scope.todayForDisplay = now.getDate() + '.' + (now.getMonth()+1) + '.' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes();
     $scope.deleteAllLabel = 'לחצו למחיקת כלל הנתונים';
+    $scope.currentView = 'home';
 
+    $scope.setView = function (view) {
+        $scope.currentView = view;
+    }
     firebase.auth().signInWithEmailAndPassword('mishko.meteor@gmail.com', '123456').catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -111,9 +118,9 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval',
         var time = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
         var timeStamp = {
             action: action,
+            fullTime: now.toString(),
             date: date,
-            time: time,
-            fullTime: now.toString()
+            time: time
         };
         return timeStamp;
     }
