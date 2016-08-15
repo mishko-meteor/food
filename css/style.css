@@ -35,6 +35,9 @@ span.menuItem {
     margin-bottom:10px;
 }
 
+button:hover {
+  background-color: darkred;
+}
 .secondary > button {
     background: midnightblue;
     font-size: 12px;
@@ -64,4 +67,9 @@ article.menu {
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.hidden {
+    display: none;
 }
