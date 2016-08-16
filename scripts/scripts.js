@@ -76,7 +76,7 @@ app.controller('mainCtrl', ['$scope', '$firebaseObject', '$timeout','$interval',
     }
 
     $scope.reset = function(enterance) {
-        $scope.data[enterance].counter = 1;
+        $scope.data[enterance].counter = 0;
         $scope.commit(enterance);
     }
 
