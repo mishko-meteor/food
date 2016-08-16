@@ -9,10 +9,15 @@
         <link href="https://fonts.googleapis.com/css?family=Alef" rel="stylesheet">
     </head>
     <body ng-cloak ng-controller="mainCtrl" >
-        <div id="fader">
+        <div ng-cloak>
             <span class="deleted fadeInUp" ng-click="setView('home')">
                     <h2>כניסות ויציאות  </h2>
             </span>
+                                <span>
+                        <h2>
+                            {{ todayForDisplay }}
+                        </h2>    
+                    </span>
             <section ng-show="currentView == 'home'" class="animated fadeInUp">
                 <article class="menu">
                     <h1>בחרו כניסה</h1>
@@ -36,11 +41,6 @@
                             {{ data['entrance1'].counter + data['entrance2'].counter + data['entrance3'].counter }} 
                             </h2></button>         
                     </span>
-                    <span class="menuItem">
-                        <h2>
-                            {{ todayForDisplay }}
-                        </h2>    
-                    </span>
                 </article>
             </section>
 
@@ -53,13 +53,14 @@
                         <button type="" ng-click="decrease('entrance1')">יציאה</button>
                     </span>
                     <span class="secondary">
-                        <button type="button" ng-csv="data.entrance1.instances" csv-header="['Action', 'Timestamp', 'Date', 'Time']" filename="Entrance1_{{today}}.csv">יצא נתונים</button>
+                        <button type="button" ng-csv="data.entrance1.instances" csv-header="['Action', 'Timestamp', 'Date', 'Time']" filename="Entrance1_{{today}}.csv">יצוא נתונים</button>
                         <button type="" ng-click="reset('entrance1')">איפוס מונה</button>
                     </span>
                     <span>
                         <h2>{{ data['entrance1'].counter }}</h2>             
                     </span>
                 </article>
+                
                 <article ng-show="currentView == 'Entrance2' || currentView == 'allEntrances'" class="animated fadeInUp">
                     <h1>כניסה 2</h1>
                     <span class="main">
@@ -67,7 +68,7 @@
                         <button type="" ng-click="decrease('entrance2')">יציאה</button>
                     </span>
                     <span class="secondary">
-                        <button type="button" ng-csv="data.entrance2.instances" csv-header="['Action', 'Timestamp', 'Date', 'Time']" filename="Entrance2_{{today}}.csv">יצא נתונים</button>
+                        <button type="button" ng-csv="data.entrance2.instances" csv-header="['Action', 'Timestamp', 'Date', 'Time']" filename="Entrance2_{{today}}.csv">יצוא נתונים</button>
                         <button type="" ng-click="reset('entrance2')">איפוס מונה</button>
                     </span>
                     <span>
@@ -81,7 +82,7 @@
                         <button type="" ng-click="decrease('entrance3')">יציאה</button>
                     </span>
                     <span class="secondary">
-                        <button type="button" ng-csv="data.entrance3.instances" csv-header="['Action', 'Timestamp', 'Date', 'Time']" filename="Entrance3_{{today}}.csv">יצא נתונים</button>
+                        <button type="button" ng-csv="data.entrance3.instances" csv-header="['Action', 'Timestamp', 'Date', 'Time']" filename="Entrance3_{{today}}.csv">יצוא נתונים</button>
                         <button type="" ng-click="reset('entrance3')">איפוס מונה</button>
                     </span>
                     <span>
